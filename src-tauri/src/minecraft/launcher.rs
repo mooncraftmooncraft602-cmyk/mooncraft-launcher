@@ -270,7 +270,8 @@ pub fn build_plan_neoforge(
     for a in van_game {
         game_args.push(subst(&a));
     }
-    // NeoForge game args (--launchTarget neoforgeclient, --fml.*…).
+    // NeoForge game args, verbatim from the version JSON
+    // (e.g. `--launchTarget forgeclient`, `--fml.neoForgeVersion`, `--fml.mcVersion`…).
     for a in &neoforge.game_args {
         game_args.push(subst(a));
     }
