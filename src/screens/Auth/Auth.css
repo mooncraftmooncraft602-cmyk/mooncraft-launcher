@@ -22,7 +22,7 @@
   background: linear-gradient(180deg, rgba(20, 22, 50, 0.95), rgba(8, 9, 22, 0.95));
   border: 1px solid var(--line-strong);
   border-radius: var(--r-xl);
-  box-shadow: var(--shadow-3), 0 0 80px rgba(124, 78, 255, 0.2);
+  box-shadow: var(--shadow-3), 0 0 80px rgba(138, 77, 255, 0.2);
   overflow-y: auto;
   animation: fade-in-scale 280ms var(--easing-soft);
 }
@@ -107,7 +107,7 @@
 .auth-path:hover {
   transform: translateY(-2px);
   border-color: var(--neon-cyan);
-  background: rgba(36, 200, 219, 0.06);
+  background: rgba(63, 109, 255, 0.06);
 }
 .auth-path--premium:hover {
   border-color: var(--neon-gold);
@@ -117,7 +117,7 @@
 .auth-path__icon {
   font-size: 28px;
   margin-bottom: 4px;
-  filter: drop-shadow(0 0 10px rgba(124, 220, 255, 0.4));
+  filter: drop-shadow(0 0 10px rgba(63, 109, 255, 0.4));
 }
 .auth-path--premium .auth-path__icon { filter: drop-shadow(0 0 10px rgba(255, 209, 102, 0.5)); }
 
@@ -149,8 +149,8 @@
   align-self: flex-start;
   padding: 6px 12px;
   border-radius: var(--r-full);
-  background: rgba(124, 78, 255, 0.18);
-  border: 1px solid rgba(124, 78, 255, 0.32);
+  background: rgba(138, 77, 255, 0.18);
+  border: 1px solid rgba(138, 77, 255, 0.32);
 }
 
 .auth-fineprint {
@@ -215,7 +215,7 @@
 .auth-field input:focus {
   border-color: var(--neon-cyan);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(36, 200, 219, 0.18);
+  box-shadow: 0 0 0 3px rgba(63, 109, 255, 0.18);
 }
 .auth-field__row {
   display: grid;
@@ -297,14 +297,14 @@
 }
 .auth-btn:hover:not(:disabled) {
   border-color: var(--neon-cyan);
-  background: rgba(36, 200, 219, 0.08);
+  background: rgba(63, 109, 255, 0.08);
 }
 .auth-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .auth-btn--primary {
   background: linear-gradient(135deg, var(--neon-violet), var(--neon-cyan));
   color: #050615;
   border-color: transparent;
-  box-shadow: 0 8px 30px rgba(124, 78, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(138, 77, 255, 0.4);
 }
 .auth-btn--primary:hover:not(:disabled) {
   transform: translateY(-1px);

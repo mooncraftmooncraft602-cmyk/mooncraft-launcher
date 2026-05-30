@@ -85,7 +85,7 @@
   margin: 0;
   padding: 8px 14px;
   border-left: 3px solid var(--neon-violet);
-  background: rgba(124, 78, 255, 0.08);
+  background: rgba(138, 77, 255, 0.08);
   color: var(--fg-1);
   font-style: italic;
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
@@ -94,7 +94,7 @@
   font-family: var(--font-mono);
   font-size: 0.9em;
   padding: 1px 6px;
-  background: rgba(36, 200, 219, 0.1);
+  background: rgba(63, 109, 255, 0.1);
   color: var(--neon-cyan);
   border-radius: 4px;
 }

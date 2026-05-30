@@ -9,7 +9,7 @@
 
 .patience__icon {
   font-size: 48px;
-  filter: drop-shadow(0 0 18px rgba(124, 78, 255, 0.55));
+  filter: drop-shadow(0 0 18px rgba(138, 77, 255, 0.55));
   margin-bottom: 4px;
   animation: pulse 2.6s ease-in-out infinite;
 }
@@ -56,13 +56,13 @@
 }
 .patience__btn:hover {
   border-color: var(--neon-cyan);
-  background: rgba(36, 200, 219, 0.08);
+  background: rgba(63, 109, 255, 0.08);
 }
 .patience__btn--primary {
   background: linear-gradient(135deg, var(--neon-violet), var(--neon-cyan));
   color: #050615;
   border-color: transparent;
-  box-shadow: 0 8px 30px rgba(124, 78, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(138, 77, 255, 0.4);
 }
 .patience__btn--primary:hover {
   transform: translateY(-1px);

@@ -11,10 +11,10 @@
   border-radius: var(--r-xl);
   padding: 36px 44px 32px;
   background:
-    radial-gradient(circle at 80% 0%, rgba(124, 78, 255, 0.35) 0%, transparent 55%),
-    radial-gradient(circle at 0% 100%, rgba(36, 200, 219, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(138, 77, 255, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(63, 109, 255, 0.22) 0%, transparent 55%),
     linear-gradient(160deg, rgba(20, 22, 50, 0.85), rgba(8, 9, 22, 0.85));
-  border: 1px solid rgba(124, 220, 255, 0.12);
+  border: 1px solid rgba(63, 109, 255, 0.12);
   overflow: hidden;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 30px 80px rgba(0,0,0,0.35);
 }
@@ -26,7 +26,7 @@
   width: 60%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 220, 255, 0.55), transparent 60%);
+  background: radial-gradient(circle, rgba(63, 109, 255, 0.55), transparent 60%);
   filter: blur(40px);
   pointer-events: none;
 }
@@ -120,7 +120,7 @@
   padding: 6px 12px;
   border-radius: 99px;
   background: rgba(8, 9, 22, 0.55);
-  border: 1px solid rgba(124, 220, 255, 0.25);
+  border: 1px solid rgba(63, 109, 255, 0.25);
   font-size: var(--fs-2xs);
   font-weight: 700;
   letter-spacing: var(--tracking-widest);
@@ -150,7 +150,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 30px rgba(36, 200, 219, 0.45));
+  filter: drop-shadow(0 0 30px rgba(63, 109, 255, 0.45));
 }
 
 .home__desc {
@@ -226,12 +226,12 @@
 }
 .home__ip-pill--locked {
   border-color: var(--line-violet);
-  background: rgba(124, 78, 255, 0.08);
+  background: rgba(138, 77, 255, 0.08);
   color: var(--fg-0);
 }
 .home__ip-locked-icon {
   font-size: 12px;
-  filter: drop-shadow(0 0 6px rgba(124, 78, 255, 0.5));
+  filter: drop-shadow(0 0 6px rgba(138, 77, 255, 0.5));
 }
 .home__ip-ping {
   font-family: var(--font-mono);
@@ -261,8 +261,8 @@
   gap: 10px;
   padding: 10px 14px;
   border-radius: var(--r-md);
-  background: rgba(124, 78, 255, 0.06);
-  border: 1px solid rgba(124, 78, 255, 0.18);
+  background: rgba(138, 77, 255, 0.06);
+  border: 1px solid rgba(138, 77, 255, 0.18);
   margin-top: 4px;
   min-height: 38px;
 }
@@ -309,7 +309,7 @@
 .home__panel {
   border-radius: var(--r-md);
   background: linear-gradient(180deg, rgba(15, 17, 38, 0.7), rgba(8, 9, 22, 0.55));
-  border: 1px solid rgba(124, 220, 255, 0.08);
+  border: 1px solid rgba(63, 109, 255, 0.08);
   padding: 14px 16px;
   overflow: hidden;
   display: flex;
@@ -370,7 +370,7 @@
 
 .home__ghost-btn {
   background: transparent;
-  border: 1px solid rgba(124, 220, 255, 0.18);
+  border: 1px solid rgba(63, 109, 255, 0.18);
   color: var(--fg-1);
   font-size: var(--fs-2xs);
   letter-spacing: var(--tracking-wider);
@@ -385,5 +385,5 @@
 .home__ghost-btn:hover {
   border-color: var(--neon-cyan);
   color: #fff;
-  background: rgba(36, 200, 219, 0.08);
+  background: rgba(63, 109, 255, 0.08);
 }

@@ -79,7 +79,7 @@ a:hover { text-decoration: underline; }
   border-radius: 14px;
   overflow: hidden;
   background: rgba(5, 6, 21, 0.55);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(124, 220, 255, 0.06);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(63, 109, 255, 0.06);
   isolation: isolate;
 }
 

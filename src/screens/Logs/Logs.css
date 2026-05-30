@@ -44,7 +44,7 @@
   cursor: pointer;
   transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
 }
-.logs-btn:hover { border-color: var(--neon-cyan); background: rgba(36, 200, 219, 0.08); }
+.logs-btn:hover { border-color: var(--neon-cyan); background: rgba(63, 109, 255, 0.08); }
 .logs-btn--danger:hover { border-color: var(--neon-pink); background: rgba(255, 76, 154, 0.08); color: var(--neon-pink); }
 
 .logs-controls {
@@ -94,7 +94,7 @@
   cursor: pointer;
 }
 .logs-chip:hover { color: var(--fg-0); }
-.logs-chip.is-active           { background: rgba(36, 200, 219, 0.18); color: var(--neon-cyan); border-color: var(--neon-cyan); }
+.logs-chip.is-active           { background: rgba(63, 109, 255, 0.18); color: var(--neon-cyan); border-color: var(--neon-cyan); }
 .logs-chip--warn.is-active     { background: rgba(255, 209, 102, 0.18); color: var(--neon-gold); border-color: var(--neon-gold); }
 .logs-chip--error.is-active    { background: rgba(255, 76, 154, 0.18);  color: var(--neon-pink); border-color: var(--neon-pink); }
 

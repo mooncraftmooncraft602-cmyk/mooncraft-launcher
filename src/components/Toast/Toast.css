@@ -48,7 +48,7 @@
   display: grid;
   place-items: center;
   border-radius: var(--r-full);
-  background: rgba(36, 200, 219, 0.12);
+  background: rgba(63, 109, 255, 0.12);
   color: var(--neon-cyan);
   font-size: 14px;
   font-weight: 800;
@@ -58,7 +58,7 @@
 .toast--error   .toast__icon { color: var(--neon-pink);  background: rgba(255, 76, 154, 0.12); }
 .toast--transmission .toast__icon {
   color: var(--neon-violet);
-  background: rgba(124, 78, 255, 0.14);
+  background: rgba(138, 77, 255, 0.14);
   animation: pulse 1.6s ease-in-out infinite;
 }
 

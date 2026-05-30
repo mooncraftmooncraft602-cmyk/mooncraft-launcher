@@ -176,12 +176,12 @@ export function Home() {
           <div className="home__greeting">{greeting}</div>
 
           <h1 className="home__title">
-            <span>Welcome to the</span>
-            <span className="home__title-accent">Moon.</span>
+            <span>Bienvenue sur</span>
+            <span className="home__title-accent">Moon Craft.</span>
           </h1>
           <p className="home__desc">
-            A premium Fabric server with custom content. Smelt moonstone,
-            terraform craters, and build your colony among the stars.
+            Serveur MMORPG NeoForge 1.21.1 — classes, métiers, donjons,
+            guildes & économie. Forge ta légende parmi les cratères lunaires.
           </p>
 
           <div className="home__cta-row">

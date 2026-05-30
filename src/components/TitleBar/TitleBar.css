@@ -3,7 +3,7 @@
   align-items: center;
   height: 44px;
   padding: 0 0 0 18px;
-  border-bottom: 1px solid rgba(124, 220, 255, 0.08);
+  border-bottom: 1px solid rgba(63, 109, 255, 0.08);
   background: linear-gradient(180deg, rgba(8, 10, 24, 0.65) 0%, rgba(8, 10, 24, 0.25) 100%);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
@@ -22,7 +22,7 @@
   width: 26px;
   height: 26px;
   color: var(--neon-cyan);
-  filter: drop-shadow(0 0 8px rgba(36, 200, 219, 0.65));
+  filter: drop-shadow(0 0 8px rgba(63, 109, 255, 0.65));
 }
 
 .titlebar__title {
@@ -40,7 +40,7 @@
   font-weight: 800;
   font-size: 13px;
   color: var(--neon-cyan);
-  text-shadow: 0 0 12px rgba(36, 200, 219, 0.65);
+  text-shadow: 0 0 12px rgba(63, 109, 255, 0.65);
 }
 .titlebar__title-sub {
   font-size: 9px;
@@ -76,7 +76,7 @@
   stroke-width: 1.4;
 }
 .titlebar__btn:hover {
-  background: rgba(124, 220, 255, 0.07);
+  background: rgba(63, 109, 255, 0.07);
   color: #fff;
 }
 .titlebar__btn--close:hover {

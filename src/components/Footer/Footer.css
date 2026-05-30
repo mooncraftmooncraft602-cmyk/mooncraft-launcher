@@ -76,6 +76,6 @@
 }
 .app-footer__link:hover {
   color: var(--neon-cyan);
-  background: rgba(36, 200, 219, 0.08);
+  background: rgba(63, 109, 255, 0.08);
   text-decoration: none;
 }

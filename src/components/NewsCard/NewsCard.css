@@ -4,7 +4,7 @@
   flex-direction: column;
   border-radius: var(--r-lg);
   background: linear-gradient(180deg, rgba(15, 17, 38, 0.7), rgba(8, 9, 22, 0.55));
-  border: 1px solid rgba(124, 220, 255, 0.08);
+  border: 1px solid rgba(63, 109, 255, 0.08);
   overflow: hidden;
   transition: transform 220ms var(--easing-soft), border-color 220ms ease, box-shadow 220ms ease;
   cursor: pointer;
@@ -12,8 +12,8 @@
 }
 .news-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(36, 200, 219, 0.35);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 30px rgba(124, 78, 255, 0.18);
+  border-color: rgba(63, 109, 255, 0.35);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 30px rgba(138, 77, 255, 0.18);
 }
 .news-card:focus-visible {
   outline-offset: 4px;

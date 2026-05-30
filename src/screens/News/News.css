@@ -43,7 +43,7 @@
 }
 .news-screen__search:focus-within {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 0 3px rgba(36, 200, 219, 0.18);
+  box-shadow: 0 0 0 3px rgba(63, 109, 255, 0.18);
 }
 .news-screen__search-icon {
   color: var(--fg-2);

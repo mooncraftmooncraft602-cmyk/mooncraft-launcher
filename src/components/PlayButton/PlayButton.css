@@ -11,7 +11,7 @@
 .play-orbit {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(124, 220, 255, 0.16);
+  border: 1px solid rgba(63, 109, 255, 0.16);
   pointer-events: none;
   opacity: 0;
   transition: opacity 320ms ease;
@@ -22,7 +22,7 @@
 }
 .play-orbit--inner {
   width: 280px; height: 280px;
-  border-color: rgba(124, 78, 255, 0.28);
+  border-color: rgba(138, 77, 255, 0.28);
 }
 .play-orbit::after {
   content: "";
@@ -48,7 +48,7 @@
   position: absolute;
   width: 240px; height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, rgba(255, 209, 102, 0.18), rgba(124, 78, 255, 0.18) 60%, transparent 70%);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 209, 102, 0.18), rgba(138, 77, 255, 0.18) 60%, transparent 70%);
   filter: blur(20px);
   opacity: 0.6;
   transition: opacity 320ms ease, transform 320ms ease;
@@ -81,8 +81,8 @@
   overflow: hidden;
   z-index: 1;
   box-shadow:
-    0 12px 40px rgba(124, 78, 255, 0.45),
-    0 0 60px rgba(36, 200, 219, 0.28),
+    0 12px 40px rgba(138, 77, 255, 0.45),
+    0 0 60px rgba(63, 109, 255, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: filter 220ms ease, box-shadow 220ms ease;
   font-family: var(--font-display);
@@ -109,7 +109,7 @@
 .play-btn--running {
   background: linear-gradient(135deg, #1c2547 0%, #283766 100%);
   color: var(--neon-cyan);
-  box-shadow: inset 0 0 0 1px rgba(124, 220, 255, 0.4), 0 0 40px rgba(36, 200, 219, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(63, 109, 255, 0.4), 0 0 40px rgba(63, 109, 255, 0.25);
   animation: none;
 }
 
@@ -118,9 +118,9 @@
   inset: -40%;
   background: conic-gradient(
     from 90deg,
-    rgba(124, 78, 255, 0.55),
-    rgba(36, 200, 219, 0.55),
-    rgba(124, 78, 255, 0.55)
+    rgba(138, 77, 255, 0.55),
+    rgba(63, 109, 255, 0.55),
+    rgba(138, 77, 255, 0.55)
   );
   filter: blur(28px);
   opacity: 0.55;
