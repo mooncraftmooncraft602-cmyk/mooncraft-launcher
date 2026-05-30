@@ -1,0 +1,125 @@
+/* MoonCraft theme tokens.
+   Cyan + violet on near-black space, with a subtle hint of magenta in the
+   aurora overlays. Keep palette extremely tight on purpose — neon design
+   languages live or die by restraint. */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* Brand — bleu nuit lunaire (cohérent avec le HUD en jeu MoonUI) façon Paladium */
+  --neon-cyan:   #3f6dff;   /* accent principal (bleu nuit) */
+  --neon-violet: #8a4dff;   /* accent secondaire */
+  --neon-pink:   #ff5c8a;
+  --neon-gold:   #ffce5e;
+  --neon-mars:   #e2466b;
+  --neon-green:  #35d17a;
+
+  /* Surface — slate profond, plat et premium */
+  --bg-0: #070b16;          /* fond profond */
+  --bg-1: #0b1024;          /* panneau */
+  --bg-2: #121a36;          /* panneau surélevé */
+  --bg-3: #1b2950;          /* panneau survol */
+  --bg-glass: rgba(11, 16, 36, 0.58);
+  --bg-glass-strong: rgba(8, 12, 28, 0.90);
+
+  /* Text */
+  --fg-0: #eaf1ff;
+  --fg-1: rgba(234, 241, 255, 0.80);
+  --fg-2: rgba(160, 179, 216, 0.62);
+  --fg-3: rgba(160, 179, 216, 0.38);
+
+  /* Borders — fines, bleutées (style module Helios) */
+  --line:        rgba(63, 109, 255, 0.12);
+  --line-strong: rgba(63, 109, 255, 0.30);
+  --line-violet: rgba(138, 77, 255, 0.35);
+
+  /* Type — families */
+  --font-display: "Orbitron", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type — scale (modular, 1.25 ratio anchored at 14px body) */
+  --fs-2xs: 10px;
+  --fs-xs:  11px;
+  --fs-sm:  12px;
+  --fs-md:  14px;
+  --fs-lg:  16px;
+  --fs-xl:  20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+  --fs-4xl: 48px;
+  --fs-5xl: 64px;
+  --fs-6xl: 84px;
+
+  /* Letter spacing presets */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.18em;
+  --tracking-widest: 0.28em;
+
+  /* Radii */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 22px;
+  --r-full: 999px;
+
+  /* Spacing scale (4px base) */
+  --sp-0: 0;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+
+  /* Shadows */
+  --shadow-1: 0 6px 18px rgba(0,0,0,0.35);
+  --shadow-2: 0 14px 38px rgba(0,0,0,0.45);
+  --shadow-3: 0 30px 60px rgba(0,0,0,0.5);
+  --glow-cyan:   0 0 18px rgba(63, 109, 255, 0.38);
+  --glow-violet: 0 0 18px rgba(138, 77, 255, 0.38);
+  --glow-pink:   0 0 18px rgba(255, 92, 138, 0.34);
+  --glow-gold:   0 0 18px rgba(255, 206, 94, 0.42);
+
+  /* Motion */
+  --easing-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-snap: cubic-bezier(0.18, 1.2, 0.4, 1);
+  --easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --d-fast: 140ms;
+  --d-base: 220ms;
+  --d-slow: 360ms;
+
+  /* z-index scale */
+  --z-bg: 0;
+  --z-content: 2;
+  --z-overlay: 50;
+  --z-modal: 100;
+  --z-toast: 200;
+  --z-splash: 1000;
+
+  /* Accent (themeable) */
+  --accent-1: var(--neon-cyan);
+  --accent-2: var(--neon-violet);
+}
+
+/* Reduced motion — respected globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* User-toggleable reduced motion (a11y setting) */
+.a11y-no-motion *, .a11y-no-motion *::before, .a11y-no-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}

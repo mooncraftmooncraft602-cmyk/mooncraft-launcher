@@ -1,0 +1,106 @@
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(0.85); }
+}
+
+@keyframes shine {
+  to { transform: translateX(100%); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes drift-a {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(8%, -5%, 0) scale(1.1); }
+}
+@keyframes drift-b {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-7%, 6%, 0) scale(1.08); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Soft pulse for idle play button — visible but discrete */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.018); }
+}
+
+/* Conic ring that slowly orbits behind the play button */
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+
+/* Click ripple */
+@keyframes ripple {
+  from { opacity: 0.45; transform: scale(0); }
+  to   { opacity: 0;    transform: scale(2.5); }
+}
+
+/* Error shake (used on form invalid, retry click) */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80%      { transform: translateX(4px); }
+}
+
+/* Shimmer travelling left → right on progress bars */
+@keyframes shimmer-x {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Draws a check mark */
+@keyframes draw-check {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Rocket lift-off (used during launch) */
+@keyframes rocket-rise {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translateY(-220px) scale(0.6); opacity: 0; }
+}
+
+/* Splash logo entry */
+@keyframes splash-in {
+  0%   { opacity: 0; transform: scale(0.7) translateY(20px); }
+  100% { opacity: 1; transform: scale(1)   translateY(0);    }
+}
+
+/* Splash exit */
+@keyframes splash-out {
+  to { opacity: 0; transform: scale(1.05); }
+}
+
+/* Toast slide-in from right */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* Confetti star fall */
+@keyframes star-fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Mini equalizer bars */
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%      { transform: scaleY(1);   }
+}

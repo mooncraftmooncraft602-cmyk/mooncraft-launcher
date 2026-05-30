@@ -1,0 +1,167 @@
+.logs-screen {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.logs-screen__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logs-screen__head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+}
+.logs-screen__head p {
+  margin: 4px 0 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+}
+
+.logs-screen__actions {
+  display: flex;
+  gap: 8px;
+}
+.logs-btn {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  background: rgba(8, 9, 22, 0.55);
+  border: 1px solid var(--line-strong);
+  color: var(--fg-0);
+  cursor: pointer;
+  transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+}
+.logs-btn:hover { border-color: var(--neon-cyan); background: rgba(36, 200, 219, 0.08); }
+.logs-btn--danger:hover { border-color: var(--neon-pink); background: rgba(255, 76, 154, 0.08); color: var(--neon-pink); }
+
+.logs-controls {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logs-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 12px;
+  background: rgba(8, 9, 22, 0.55);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  color: var(--fg-2);
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+}
+.logs-search:focus-within { border-color: var(--neon-cyan); }
+.logs-search input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--fg-0);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+}
+
+.logs-levels {
+  display: flex;
+  gap: 6px;
+}
+.logs-chip {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  background: rgba(8, 9, 22, 0.55);
+  border: 1px solid var(--line-strong);
+  color: var(--fg-2);
+  cursor: pointer;
+}
+.logs-chip:hover { color: var(--fg-0); }
+.logs-chip.is-active           { background: rgba(36, 200, 219, 0.18); color: var(--neon-cyan); border-color: var(--neon-cyan); }
+.logs-chip--warn.is-active     { background: rgba(255, 209, 102, 0.18); color: var(--neon-gold); border-color: var(--neon-gold); }
+.logs-chip--error.is-active    { background: rgba(255, 76, 154, 0.18);  color: var(--neon-pink); border-color: var(--neon-pink); }
+
+.logs-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: var(--fg-1);
+  cursor: pointer;
+  letter-spacing: var(--tracking-wide);
+}
+.logs-follow input { accent-color: var(--neon-cyan); }
+
+.logs-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+
+.logs-stream {
+  flex: 1;
+  min-height: 0;
+  border-radius: var(--r-md);
+  background: rgba(2, 3, 12, 0.85);
+  border: 1px solid var(--line);
+  overflow-y: auto;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+.logs-empty {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--fg-3);
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--fs-sm);
+  text-align: center;
+  padding: 32px;
+}
+
+.logs-line {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 10px;
+  padding: 2px 0;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.logs-line__src {
+  color: var(--fg-3);
+  text-align: right;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 2px;
+}
+.logs-line__txt { color: var(--fg-1); }
+
+.logs-line--info  .logs-line__txt { color: var(--fg-1); }
+.logs-line--warn  .logs-line__txt { color: var(--neon-gold); }
+.logs-line--error .logs-line__txt { color: var(--neon-pink); }
+.logs-line--warn  { background: rgba(255, 209, 102, 0.04); }
+.logs-line--error { background: rgba(255, 76, 154, 0.06); }

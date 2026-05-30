@@ -1,0 +1,89 @@
+.toast-container {
+  position: fixed;
+  top: 56px;
+  right: 24px;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: rgba(10, 12, 30, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-2);
+  color: var(--fg-0);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.toast::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--neon-cyan);
+}
+
+.toast--success::before     { background: var(--neon-green); }
+.toast--warn::before        { background: var(--neon-gold); }
+.toast--error::before       { background: var(--neon-pink); }
+.toast--transmission::before{ background: var(--neon-violet); }
+
+.toast__icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-full);
+  background: rgba(36, 200, 219, 0.12);
+  color: var(--neon-cyan);
+  font-size: 14px;
+  font-weight: 800;
+}
+.toast--success .toast__icon { color: var(--neon-green); background: rgba(67, 217, 122, 0.12); }
+.toast--warn    .toast__icon { color: var(--neon-gold);  background: rgba(255, 209, 102, 0.12); }
+.toast--error   .toast__icon { color: var(--neon-pink);  background: rgba(255, 76, 154, 0.12); }
+.toast--transmission .toast__icon {
+  color: var(--neon-violet);
+  background: rgba(124, 78, 255, 0.14);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.toast__body { min-width: 0; }
+
+.toast__title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--fg-0);
+}
+
+.toast__desc {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--fg-1);
+  line-height: 1.45;
+}
+
+.toast__close {
+  background: transparent;
+  border: 0;
+  color: var(--fg-2);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0 4px;
+  align-self: start;
+}
+.toast__close:hover { color: var(--fg-0); }

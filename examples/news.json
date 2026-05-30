@@ -1,0 +1,29 @@
+[
+  {
+    "id": "season-01-launch",
+    "title": "Season 01: Luna Rising is live!",
+    "subtitle": "The moon awaits, pilots.",
+    "body": "Season 01 opens with new biomes, a custom moonstone tech tree, and the first community-built spaceport. Login bonuses are active for the next 7 days. See you on play.mooncraft.gg.",
+    "image": "https://cdn.mooncraft.gg/news/season01.jpg",
+    "tag": "EVENT",
+    "published_at": "2026-05-15T18:00:00Z"
+  },
+  {
+    "id": "patch-1-0-1",
+    "title": "Hotfix 1.0.1",
+    "subtitle": "Stability + balance",
+    "body": "Fixed a duplication bug in the moonstone smelter, rebalanced jetpack fuel costs, and bumped Fabric loader to 0.16.5.",
+    "image": null,
+    "tag": "PATCH",
+    "published_at": "2026-05-16T09:00:00Z"
+  },
+  {
+    "id": "build-contest",
+    "title": "Build contest: Lunar Architecture",
+    "subtitle": "Submissions open until June 1",
+    "body": "Submit your best lunar base. Top 3 builds get featured on the spawn island and earn a unique cape.",
+    "image": "https://cdn.mooncraft.gg/news/contest.jpg",
+    "tag": "COMMUNITY",
+    "published_at": "2026-05-17T12:00:00Z"
+  }
+]

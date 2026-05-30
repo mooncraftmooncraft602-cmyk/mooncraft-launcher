@@ -1,0 +1,85 @@
+.titlebar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 0 0 18px;
+  border-bottom: 1px solid rgba(124, 220, 255, 0.08);
+  background: linear-gradient(180deg, rgba(8, 10, 24, 0.65) 0%, rgba(8, 10, 24, 0.25) 100%);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  position: relative;
+  z-index: 1100;
+  user-select: none;
+}
+
+.titlebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.titlebar__logo {
+  width: 26px;
+  height: 26px;
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 8px rgba(36, 200, 219, 0.65));
+}
+
+.titlebar__title {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  letter-spacing: 0.18em;
+}
+.titlebar__title-main {
+  font-weight: 800;
+  font-size: 13px;
+  color: #f5f7ff;
+}
+.titlebar__title-accent {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(36, 200, 219, 0.65);
+}
+.titlebar__title-sub {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(207, 218, 255, 0.55);
+  margin-left: 6px;
+  letter-spacing: 0.32em;
+}
+
+.titlebar__spacer { flex: 1; }
+
+.titlebar__controls {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.titlebar__btn {
+  width: 44px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  color: rgba(207, 218, 255, 0.7);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+.titlebar__btn svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+.titlebar__btn:hover {
+  background: rgba(124, 220, 255, 0.07);
+  color: #fff;
+}
+.titlebar__btn--close:hover {
+  background: linear-gradient(180deg, rgba(255, 76, 109, 0.85), rgba(255, 76, 109, 0.55));
+  color: #fff;
+}

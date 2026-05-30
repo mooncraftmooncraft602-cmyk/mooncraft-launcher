@@ -1,0 +1,188 @@
+/* Wrapper hosts the orbits so the button itself stays rectangular and clean. */
+.play-stack {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  isolation: isolate;
+  padding: 36px 16px;
+}
+
+/* Orbital rings — only visible when idle/ready so they don't compete with progress. */
+.play-orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 220, 255, 0.16);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  z-index: 0;
+}
+.play-orbit--outer {
+  width: 360px; height: 360px;
+}
+.play-orbit--inner {
+  width: 280px; height: 280px;
+  border-color: rgba(124, 78, 255, 0.28);
+}
+.play-orbit::after {
+  content: "";
+  position: absolute;
+  top: -3px; left: 50%;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan);
+  transform: translateX(-50%);
+}
+.play-orbit--inner::after { background: var(--neon-violet); box-shadow: 0 0 12px var(--neon-violet); }
+
+.play-stack--ready .play-orbit,
+.play-stack--error .play-orbit {
+  opacity: 1;
+}
+.play-stack--ready .play-orbit--outer { animation: orbit 14s linear infinite; }
+.play-stack--ready .play-orbit--inner { animation: orbit 9s linear infinite reverse; }
+
+/* Moon disc behind the button — brightens on hover */
+.play-moon {
+  position: absolute;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 209, 102, 0.18), rgba(124, 78, 255, 0.18) 60%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0.6;
+  transition: opacity 320ms ease, transform 320ms ease;
+  z-index: 0;
+}
+
+.play-stack:hover .play-moon {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.play-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 280px;
+  height: 78px;
+  padding: 0 36px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 100%);
+  color: #050615;
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow:
+    0 12px 40px rgba(124, 78, 255, 0.45),
+    0 0 60px rgba(36, 200, 219, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: filter 220ms ease, box-shadow 220ms ease;
+  font-family: var(--font-display);
+}
+
+.play-btn.is-ready {
+  animation: breathe 3.4s ease-in-out infinite;
+}
+
+.play-btn:disabled,
+.play-btn.is-blocked {
+  cursor: progress;
+  filter: saturate(0.85);
+  animation: none;
+}
+
+.play-btn--error {
+  background: linear-gradient(135deg, #ff4c6d 0%, #ff8a3d 100%);
+  box-shadow:
+    0 10px 30px rgba(255, 76, 109, 0.45),
+    0 0 60px rgba(255, 138, 61, 0.25);
+  animation: shake 600ms ease-in-out 1, breathe 3.4s ease-in-out 600ms infinite;
+}
+.play-btn--running {
+  background: linear-gradient(135deg, #1c2547 0%, #283766 100%);
+  color: var(--neon-cyan);
+  box-shadow: inset 0 0 0 1px rgba(124, 220, 255, 0.4), 0 0 40px rgba(36, 200, 219, 0.25);
+  animation: none;
+}
+
+.play-btn__glow {
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 90deg,
+    rgba(124, 78, 255, 0.55),
+    rgba(36, 200, 219, 0.55),
+    rgba(124, 78, 255, 0.55)
+  );
+  filter: blur(28px);
+  opacity: 0.55;
+  z-index: -2;
+  animation: spin 9s linear infinite;
+}
+
+.play-btn__edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.5), transparent 35%, transparent 65%, rgba(255,255,255,0.3));
+  mix-blend-mode: overlay;
+}
+
+.play-btn__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 1;
+}
+.play-btn__icon {
+  width: 22px; height: 22px;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+.play-btn__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+.play-btn__label { font-size: 17px; }
+.play-btn__sub {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(5, 6, 21, 0.75);
+}
+
+.play-btn__progress {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.95) calc(var(--p) * 1%),
+    rgba(5, 6, 21, 0.35) calc(var(--p) * 1%)
+  );
+  border-radius: 0 0 18px 18px;
+}
+
+/* Click ripple — anchored at click point, expands and fades. */
+.play-btn__ripple {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 600ms ease-out forwards;
+  z-index: 0;
+}

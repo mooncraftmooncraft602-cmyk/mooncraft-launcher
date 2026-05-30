@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "minecraft": "1.21.1",
+  "fabric": "0.16.5",
+  "java": 21,
+  "changelog": "🌑 MoonCraft 1.0.0\n— Initial release\n— Custom moonstone mod\n— Iris shaders preset\n— Server is online: play.mooncraft.gg",
+  "files": [
+    {
+      "path": "mods/fabric-api-0.103.0.jar",
+      "url": "https://cdn.mooncraft.gg/mods/fabric-api-0.103.0.jar",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size": 2400000
+    },
+    {
+      "path": "mods/mooncore-1.0.0.jar",
+      "url": "https://cdn.mooncraft.gg/mods/mooncore-1.0.0.jar",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size": 540000
+    },
+    {
+      "path": "config/mooncore.toml",
+      "url": "https://cdn.mooncraft.gg/config/mooncore.toml",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size": 1200
+    },
+    {
+      "path": "shaderpacks/Luna_Shaders_v3.zip",
+      "url": "https://cdn.mooncraft.gg/shaderpacks/Luna_Shaders_v3.zip",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size": 8500000
+    }
+  ]
+}

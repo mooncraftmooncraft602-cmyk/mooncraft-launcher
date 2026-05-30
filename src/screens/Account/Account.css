@@ -1,0 +1,279 @@
+.account-screen {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.account-screen__head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+}
+.account-screen__head p {
+  margin: 6px 0 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+}
+
+.account-screen h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.account-screen__count { color: var(--fg-2); font-size: var(--fs-xs); }
+
+.account-screen__add {
+  padding: 22px 24px;
+  background: linear-gradient(180deg, rgba(15, 17, 38, 0.7), rgba(8, 9, 22, 0.55));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.account-screen__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.account-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 720px) { .account-form-grid { grid-template-columns: 1fr; } }
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.account-field__label {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+  color: var(--fg-2);
+  text-transform: uppercase;
+}
+.account-field__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+.account-field input {
+  background: rgba(8, 10, 24, 0.7);
+  border: 1px solid var(--line-strong);
+  color: var(--fg-0);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  font-size: var(--fs-md);
+  font-family: inherit;
+  width: 100%;
+}
+.account-field input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px rgba(36, 200, 219, 0.18);
+}
+
+.account-ms-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(255, 209, 102, 0.14), rgba(124, 78, 255, 0.08));
+  border: 1px solid rgba(255, 209, 102, 0.32);
+  cursor: pointer;
+  text-align: left;
+  color: var(--fg-0);
+  font-family: inherit;
+  width: 100%;
+  margin-bottom: 6px;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.account-ms-btn:hover {
+  border-color: var(--neon-gold);
+  transform: translateY(-1px);
+}
+.account-ms-btn__icon { font-size: 26px; filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.4)); }
+.account-ms-btn__title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--fs-sm);
+  color: var(--neon-gold);
+}
+.account-ms-btn__sub {
+  display: block;
+  font-size: var(--fs-2xs);
+  color: var(--fg-1);
+  margin-top: 2px;
+}
+
+.account-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+}
+.account-divider::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+.account-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+.account-divider span {
+  padding: 0 12px;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--fg-2);
+}
+
+.account-screen__btn {
+  background: linear-gradient(135deg, var(--neon-violet), var(--neon-cyan));
+  color: #050615;
+  border: 0;
+  border-radius: var(--r-sm);
+  padding: 12px 22px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: var(--tracking-wider);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(124, 78, 255, 0.4);
+  text-transform: uppercase;
+}
+.account-screen__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.account-screen__btn--ghost {
+  background: transparent;
+  color: var(--fg-0);
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+  padding: 8px 14px;
+}
+.account-screen__btn--ghost:hover {
+  border-color: var(--neon-cyan);
+  background: rgba(36, 200, 219, 0.08);
+}
+.account-screen__btn--danger {
+  background: transparent;
+  color: rgba(255, 122, 146, 0.7);
+  border: 1px solid rgba(255, 122, 146, 0.25);
+  box-shadow: none;
+  padding: 8px 12px;
+  letter-spacing: 0;
+}
+.account-screen__btn--danger:hover { background: rgba(255, 76, 109, 0.15); color: #fff; }
+
+.account-screen__error {
+  margin-top: 10px;
+  font-size: var(--fs-sm);
+  color: var(--neon-pink);
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-wide);
+}
+
+.account-screen__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.account-screen__empty {
+  padding: 22px;
+  text-align: center;
+  border-radius: var(--r-md);
+  border: 1px dashed var(--line-strong);
+  color: var(--fg-2);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-display);
+}
+
+.account-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: var(--r-md);
+  background: rgba(8, 10, 24, 0.45);
+  border: 1px solid var(--line);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+.account-card.is-active {
+  border-color: rgba(255, 209, 102, 0.5);
+  background: linear-gradient(180deg, rgba(255, 209, 102, 0.06), rgba(8, 10, 24, 0.45));
+  box-shadow: 0 0 24px rgba(255, 209, 102, 0.1);
+}
+
+.account-card__main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.account-card__name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.account-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--fg-0);
+}
+.account-card__star {
+  color: var(--neon-gold);
+  font-size: 16px;
+  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.6));
+}
+
+.account-card__sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--fg-2);
+}
+.account-card__kind {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-wider);
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.account-card__kind--offline   { color: var(--fg-2);     background: rgba(255, 255, 255, 0.05); }
+.account-card__kind--microsoft { color: var(--neon-gold); background: rgba(255, 209, 102, 0.1); }
+.account-card__uuid { letter-spacing: 0.06em; }
+.account-card__email {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--fg-2);
+}
+
+.account-card__badge {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xs);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  padding: 5px 10px;
+  border-radius: var(--r-xs);
+  background: rgba(255, 209, 102, 0.15);
+  color: var(--neon-gold);
+}
