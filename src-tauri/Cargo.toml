@@ -19,6 +19,9 @@ tauri = { version = "2", features = [] }
 tauri-plugin-dialog = "2"
 tauri-plugin-os = "2"
 tauri-plugin-opener = "2"
+# Auto-update du launcher lui-même (mise à jour depuis les Releases GitHub)
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
 
 # Async runtime
 tokio = { version = "1", features = ["full"] }

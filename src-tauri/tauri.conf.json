@@ -31,9 +31,18 @@
       "csp": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost https:"
     }
   },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://github.com/mooncraftmooncraft602-cmyk/mooncraft-launcher/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJBRTk0NEZFMzBBODkyNEMKUldSTWtxZ3cva1RwS3JwemNDUWJkT0M1OUk5c29aMEJwOWNnY29hRHZTeE40NzFRclR4Mi9zV2YK"
+    }
+  },
   "bundle": {
     "active": true,
     "targets": "all",
+    "createUpdaterArtifacts": true,
     "category": "Game",
     "shortDescription": "Premium space-themed launcher for MoonCraft.",
     "longDescription": "MoonCraft Launcher — a holographic, cyberpunk-inspired launcher that auto-installs the modpack, manages Fabric, and keeps your client patched.",

@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { api } from "@/api";
 import { useLauncher } from "@/stores/launcher";
 import { useBackendEvents } from "@/hooks/useBackendEvents";
+import { checkLauncherUpdate } from "@/utils/selfUpdate";
+import { toast, useToasts } from "@/stores/toasts";
 import { primeAudio, play } from "@/utils/sounds";
 import { TitleBar } from "@/components/TitleBar/TitleBar";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
@@ -48,6 +50,26 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
+      // 0. Auto-update du launcher lui-même (avant tout le reste).
+      //    Si une mise à jour est installée, l'app redémarre → on s'arrête là.
+      let updToastId: number | null = null;
+      const installed = await checkLauncherUpdate({
+        onAvailable: (v) => {
+          updToastId = useToasts.getState().push({
+            kind: "info",
+            title: "Mise à jour du launcher",
+            body: `Version ${v} — téléchargement…`,
+            duration: 0,
+          });
+        },
+        onInstalling: () => toast.success("Mise à jour prête", "Redémarrage…"),
+        onError: (e) => {
+          if (updToastId) useToasts.getState().dismiss(updToastId);
+          console.error("self-update failed", e);
+        },
+      });
+      if (installed) return; // le process va redémarrer sur la nouvelle version
+
       try {
         const [info, settings, accounts] = await Promise.all([
           api.appInfo(),
