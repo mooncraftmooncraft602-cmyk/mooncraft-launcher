@@ -11,6 +11,7 @@ use tauri::Emitter;
 use crate::auth::Account;
 use crate::error::Result;
 use crate::fabric;
+use crate::neoforge;
 use crate::java;
 use crate::state::AppState;
 use crate::updater;
@@ -35,18 +36,27 @@ pub async fn launch(state: Arc<AppState>, account: Account) -> Result<u32> {
     let vanilla = assets::ensure(state.clone(), &meta.minecraft).await
         .map_err(|e| crate::error::Error::Custom(format!("[Assets] {}", e)))?;
 
-    emit(&state, "Installing Fabric loader…");
-    let fabric_profile = fabric::install(state.clone(), &meta.minecraft, &meta.fabric).await
-        .map_err(|e| crate::error::Error::Custom(format!("[Fabric] {}", e)))?;
+    // Branch on the loader declared in the manifest (fabric | neoforge).
+    let loader = meta.loader_kind();
+    let loader_version = meta.loader_version();
 
-    emit(&state, "Building launch arguments…");
-    let plan = launcher::build_plan(
-        &state,
-        &account,
-        &vanilla,
-        &fabric_profile,
-        &java_bin,
-    ).map_err(|e| crate::error::Error::Custom(format!("[Plan] {}", e)))?;
+    let plan = if loader == "neoforge" {
+        emit(&state, "Installing NeoForge…");
+        let nf = neoforge::install(state.clone(), &meta.minecraft, &loader_version, &java_bin).await
+            .map_err(|e| crate::error::Error::Custom(format!("[NeoForge] {}", e)))?;
+
+        emit(&state, "Building launch arguments…");
+        launcher::build_plan_neoforge(&state, &account, &vanilla, &nf, &java_bin)
+            .map_err(|e| crate::error::Error::Custom(format!("[Plan] {}", e)))?
+    } else {
+        emit(&state, "Installing Fabric loader…");
+        let fabric_profile = fabric::install(state.clone(), &meta.minecraft, &loader_version).await
+            .map_err(|e| crate::error::Error::Custom(format!("[Fabric] {}", e)))?;
+
+        emit(&state, "Building launch arguments…");
+        launcher::build_plan(&state, &account, &vanilla, &fabric_profile, &java_bin)
+            .map_err(|e| crate::error::Error::Custom(format!("[Plan] {}", e)))?
+    };
 
     emit(&state, "Launching Minecraft…");
     let pid = launcher::spawn(&state, plan).await

@@ -34,12 +34,41 @@ const META_FILE: &str = ".mooncraft-meta.json";
 pub struct Manifest {
     pub version: String,
     pub minecraft: String,
-    pub fabric: String,
+    /// Loader kind: `"fabric"` (default) or `"neoforge"`.
+    #[serde(default)]
+    pub loader: Option<String>,
+    /// Fabric loader version (when `loader == "fabric"`).
+    #[serde(default)]
+    pub fabric: Option<String>,
+    /// NeoForge version (when `loader == "neoforge"`).
+    #[serde(default)]
+    pub neoforge: Option<String>,
     #[serde(default = "default_java")]
     pub java: u8,
     #[serde(default)]
     pub changelog: Option<String>,
     pub files: Vec<ManifestFile>,
+}
+
+impl Manifest {
+    /// Normalised loader kind, inferred from `loader`/`neoforge`/`fabric`.
+    pub fn loader_kind(&self) -> String {
+        if let Some(l) = &self.loader {
+            return l.to_lowercase();
+        }
+        if self.neoforge.is_some() {
+            return "neoforge".into();
+        }
+        "fabric".into()
+    }
+
+    /// Version string for the active loader.
+    pub fn loader_version(&self) -> String {
+        match self.loader_kind().as_str() {
+            "neoforge" => self.neoforge.clone().unwrap_or_default(),
+            _ => self.fabric.clone().unwrap_or_default(),
+        }
+    }
 }
 
 fn default_java() -> u8 {
@@ -134,13 +163,18 @@ pub fn write_local_meta(instance_dir: &Path, manifest: &Manifest) -> Result<()> 
     struct Meta<'a> {
         version: &'a str,
         minecraft: &'a str,
-        fabric: &'a str,
+        loader: String,
+        loader_version: String,
+        /// Legacy field kept for backward compatibility with older launcher reads.
+        fabric: String,
         java: u8,
     }
     let meta = Meta {
         version: &manifest.version,
         minecraft: &manifest.minecraft,
-        fabric: &manifest.fabric,
+        loader: manifest.loader_kind(),
+        loader_version: manifest.loader_version(),
+        fabric: manifest.loader_version(),
         java: manifest.java,
     };
     let json = serde_json::to_string_pretty(&meta)?;
@@ -152,9 +186,32 @@ pub fn write_local_meta(instance_dir: &Path, manifest: &Manifest) -> Result<()> 
 pub struct LocalMeta {
     pub version: String,
     pub minecraft: String,
-    pub fabric: String,
+    #[serde(default)]
+    pub loader: String,
+    #[serde(default)]
+    pub loader_version: String,
+    /// Legacy meta files only had `fabric`.
+    #[serde(default)]
+    pub fabric: Option<String>,
     #[serde(default = "default_java")]
     pub java: u8,
+}
+
+impl LocalMeta {
+    pub fn loader_kind(&self) -> String {
+        if self.loader.is_empty() {
+            "fabric".into()
+        } else {
+            self.loader.to_lowercase()
+        }
+    }
+    pub fn loader_version(&self) -> String {
+        if !self.loader_version.is_empty() {
+            self.loader_version.clone()
+        } else {
+            self.fabric.clone().unwrap_or_default()
+        }
+    }
 }
 
 pub fn read_local_meta(instance_dir: &Path) -> Result<LocalMeta> {

@@ -21,6 +21,7 @@ pub mod config;
 pub mod downloader;
 pub mod error;
 pub mod fabric;
+pub mod neoforge;
 pub mod java;
 pub mod minecraft;
 pub mod settings;
