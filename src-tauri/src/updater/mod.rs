@@ -82,6 +82,9 @@ pub async fn run(state: Arc<AppState>) -> Result<UpdateReport> {
     // Nothing to do — fast path.
     if diff.to_download.is_empty() && diff.to_remove.is_empty() {
         manifest::write_local_version(&state.paths.instance_dir, &manifest.version)?;
+        // IMPORTANT : toujours réécrire le meta (mc/loader/version) même sur le fast path,
+        // sinon un meta périmé (ancien loader/version) ferait lancer la mauvaise édition.
+        manifest::write_local_meta(&state.paths.instance_dir, &manifest)?;
         emit_complete(&state, &manifest.version, 0);
         return Ok(UpdateReport {
             version: manifest.version,
