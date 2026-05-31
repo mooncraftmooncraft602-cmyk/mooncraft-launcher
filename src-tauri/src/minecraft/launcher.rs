@@ -174,15 +174,14 @@ pub fn build_plan_neoforge(
     let layout = Layout::for_state(state);
     let settings = state.settings.lock().unwrap().clone();
 
-    // Classpath: NeoForge libs + vanilla libs + client jar (deduped by path).
+    // Classpath: NeoForge libs + vanilla libs (deduped by path).
+    // NB : on n'ajoute PAS le jar client vanilla (versions/1.21.1/1.21.1.jar). Sur NeoForge,
+    // les classes net.minecraft viennent du client SRG/patché chargé par FML via
+    // -DlibraryDirectory. Mettre le jar vanilla ici en ferait un module automatique
+    // `_1._21._1` qui exporte net.minecraft.* en double -> conflit de modules au boot.
     let mut classpath: Vec<PathBuf> = Vec::new();
     let mut seen = std::collections::HashSet::new();
-    for p in neoforge
-        .libraries
-        .iter()
-        .chain(vanilla.libraries.iter())
-        .chain(std::iter::once(&vanilla.client_jar))
-    {
+    for p in neoforge.libraries.iter().chain(vanilla.libraries.iter()) {
         if seen.insert(p.display().to_string()) {
             classpath.push(p.clone());
         }
