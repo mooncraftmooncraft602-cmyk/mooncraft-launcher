@@ -8,6 +8,10 @@ import { play } from "@/utils/sounds";
 const CONNECT_FAIL_RE =
   /Failed to connect to the server|SocketException|Connection (?:refused|reset|timed out|closed)|AnnotatedConnectException|Internal Exception:/i;
 
+/** Échec d'AUTHENTIFICATION permanent (online-mode, whitelist, ban) — inutile de réessayer. */
+const AUTH_FAIL_RE =
+  /Invalid session|invalid_session|Failed to verify username|unverified_username|Failed to log in|multiplayer\.disconnect\.(?:unverified_username|not_whitelisted|banned_ip|banned)/i;
+
 const DISCONNECT_RE =
   /\[(?:Network|Render|Server) thread\/(?:INFO|ERROR|WARN)\][^\n]*?(?:Disconnect|Lost connection|Failed to connect|Connection (?:refused|reset|timed out|closed)|AnnotatedConnectException|kicked from)/i;
 
@@ -144,6 +148,31 @@ export function useBackendEvents() {
 
         if (CONNECT_FAIL_RE.test(l.line)) {
           connectFailedRef.current = true;
+        }
+
+        // Échec d'authentification PERMANENT (online-mode / whitelist / ban) :
+        // inutile de réessayer — on coupe, on révèle le launcher et on explique.
+        if (!joinedRef.current && AUTH_FAIL_RE.test(l.line)) {
+          killedRef.current = true;
+          api.stopGame().catch(() => {});
+          setConnecting(false);
+          setPhase("error");
+          play("error");
+          toast.error(
+            "Connexion refusée par le serveur",
+            "Compte offline rejeté : passe le serveur en online-mode=false puis redémarre-le.",
+          );
+          (async () => {
+            try {
+              const { getCurrentWindow } = await import("@tauri-apps/api/window");
+              const w = getCurrentWindow();
+              await w.setFullscreen(false);
+              await w.setAlwaysOnTop(false);
+              await w.show();
+              await w.setFocus();
+            } catch { /* noop */ }
+          })();
+          return;
         }
 
         if (!DISCONNECT_RE.test(l.line)) return;

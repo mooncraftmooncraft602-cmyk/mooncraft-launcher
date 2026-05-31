@@ -40,7 +40,7 @@ export function Home() {
     if (phase === "updating") {
       const percent =
         progress && progress.bytes_total > 0
-          ? (progress.bytes_done / progress.bytes_total) * 100
+          ? Math.min(100, Math.max(0, (progress.bytes_done / progress.bytes_total) * 100))
           : 0;
       return {
         kind: "updating",
@@ -244,7 +244,7 @@ export function Home() {
                 exit={{ opacity: 0 }}
               >
                 <ProgressBar
-                  percent={(progress.bytes_done / Math.max(1, progress.bytes_total)) * 100}
+                  percent={Math.min(100, Math.max(0, (progress.bytes_done / Math.max(1, progress.bytes_total)) * 100))}
                   label={status?.message ?? "Patching"}
                   meta={`${formatBytes(progress.bytes_done)} / ${formatBytes(progress.bytes_total)}  ·  ${formatSpeed(progress.speed_bps)}`}
                 />

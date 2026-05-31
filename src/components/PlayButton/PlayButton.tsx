@@ -24,7 +24,7 @@ export function PlayButton({ state, onClick, disabled }: Props) {
   const label = labelFor(state);
   const sub = subFor(state);
   const showRing = state.kind === "updating";
-  const percent = state.kind === "updating" ? state.percent : 0;
+  const percent = state.kind === "updating" ? Math.min(100, Math.max(0, state.percent)) : 0;
   const isBlocked =
     disabled ||
     state.kind === "checking" ||
@@ -109,7 +109,7 @@ function labelFor(s: PlayButtonState): string {
   switch (s.kind) {
     case "checking": return "Scanning…";
     case "ready":    return s.label ?? "Play";
-    case "updating": return `Patching ${s.percent.toFixed(0)}%`;
+    case "updating": return `Patching ${Math.min(100, Math.max(0, s.percent)).toFixed(0)}%`;
     case "launching":return "Launching…";
     case "running":  return "In Orbit";
     case "error":    return "Retry";
