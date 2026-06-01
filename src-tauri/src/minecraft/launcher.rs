@@ -314,6 +314,9 @@ pub async fn spawn(state: &AppState, plan: LaunchPlan) -> Result<u32> {
         // CREATE_NO_WINDOW — don't pop a black console. `creation_flags` is
         // re-exposed on `tokio::process::Command` on Windows targets.
         cmd.creation_flags(0x0800_0000);
+        // Rend le process Java DPI-aware : sans ça, sur un écran à mise à l'échelle
+        // (4K @ 150/200 %), Windows agrandit la fenêtre en bitmap → rendu flou.
+        cmd.env("__COMPAT_LAYER", "HighDpiAware");
     }
 
     tracing::info!(?plan.java_bin, "spawning minecraft");

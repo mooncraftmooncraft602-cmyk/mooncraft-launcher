@@ -149,6 +149,50 @@ fn generate_resource_pack(instance_dir: &Path, skin_png: &Path) -> Result<()> {
     Ok(())
 }
 
+/// Ensure a named file resource pack is active in `options.txt`.
+/// `pack_name` is the filename as it appears in resourcepacks/ (e.g. `"MoonCraft-ResourcePack.zip"`).
+pub fn ensure_resource_pack(instance_dir: &Path, pack_name: &str) -> Result<()> {
+    let options = instance_dir.join("options.txt");
+    let token = format!("\"file/{}\"", pack_name);
+
+    if !options.exists() {
+        let body = format!(
+            "resourcePacks:[\"vanilla\",\"mod_resources\",{}]\nincompatibleResourcePacks:[]\n",
+            token
+        );
+        std::fs::write(&options, body)?;
+        return Ok(());
+    }
+
+    let raw = std::fs::read_to_string(&options)?;
+    let mut out: Vec<String> = Vec::with_capacity(raw.lines().count() + 1);
+    let mut saw_packs = false;
+
+    for line in raw.lines() {
+        if let Some(rest) = line.strip_prefix("resourcePacks:") {
+            saw_packs = true;
+            if rest.contains(&token) {
+                out.push(line.to_string());
+            } else if rest.trim() == "[]" {
+                out.push(format!("resourcePacks:[\"vanilla\",\"mod_resources\",{}]", token));
+            } else if let Some(stripped) = rest.trim_end().strip_suffix(']') {
+                out.push(format!("resourcePacks:{},{}]", stripped, token));
+            } else {
+                out.push(line.to_string());
+            }
+        } else {
+            out.push(line.to_string());
+        }
+    }
+
+    if !saw_packs {
+        out.push(format!("resourcePacks:[\"vanilla\",\"mod_resources\",{}]", token));
+    }
+
+    std::fs::write(&options, out.join("\n") + "\n")?;
+    Ok(())
+}
+
 /// Ensure `file/mooncraft-skin` is present in `options.txt`'s resourcePacks
 /// array so MC actually loads it. Creates a minimal options.txt if absent.
 fn ensure_pack_enabled(instance_dir: &Path) -> Result<()> {

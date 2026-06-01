@@ -58,6 +58,16 @@ pub async fn launch(state: Arc<AppState>, account: Account) -> Result<u32> {
             .map_err(|e| crate::error::Error::Custom(format!("[Plan] {}", e)))?
     };
 
+    // Force le resource pack Moon Craft actif dans options.txt avant chaque lancement.
+    let _ = crate::skin::ensure_resource_pack(
+        &state.paths.instance_dir,
+        "MoonCraft-ResourcePack.zip",
+    );
+
+    // Anti-flou : si le bureau est sous la résolution native, force le plein écran natif
+    // (sinon le moniteur agrandit le signal et tout paraît flou « mal focusé »).
+    crate::display::ensure_sharp(&state.paths.instance_dir);
+
     emit(&state, "Launching Minecraft…");
     let pid = launcher::spawn(&state, plan).await
         .map_err(|e| crate::error::Error::Custom(format!("[Spawn] {}", e)))?;

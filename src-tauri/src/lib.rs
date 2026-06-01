@@ -18,6 +18,7 @@ pub mod api;
 pub mod auth;
 pub mod commands;
 pub mod config;
+pub mod display;
 pub mod downloader;
 pub mod error;
 pub mod fabric;
